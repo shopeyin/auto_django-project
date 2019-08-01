@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+
+    <div class="container">
+        <form   method="POST" class="my-ajax-form" data-url="/aja/">
+            {% csrf_token %}
+			<h3 style="text-align: center">Ajax</h3>
+				<div class="row">
+
+						<div class="col-md-6  form-label-group">
+								<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+								<label for="inputEmail">Email address</label>
+						</div>
+				</div>
+					
+				<div class="row">
+						<div class="col-md-6   form-label-group">
+							 <input type="tel" id="inputPhone" name="phonenumber" class="form-control" placeholder="Phone number"  required autofocus>
+							 <label for="inputPhone">Phone number</label>
+						</div>
+				</div>
+			
+                    <button class="btn btn-lg btn-primary " type="submit">Submit</button>
+                    
+        </form>
+        
+      
+	   
+    </div>
+
+    <div id="res">
+
+    </div>
+    {% endblock %}
+
+
+{% block scriptss %}
+  <!--jQuery-->
+<script type="text/javascript" src="{% static  'css/bootstrap/js/jquery-3.3.1.js' %}"></script>
+<!--Popper-->
+<script type="text/javascript" src="{% static  'css/bootstrap/js/popper.min.js' %}"></script>
+<!--Bootstrap-->
+<script type="text/javascript" src="{% static 'css/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var $myForm = $('.my-ajax-form');
+        $myForm.submit(function(event){
+            event.preventDefault()
+            var $formData = $myForm.serialize();
+            var $thisURL = $myForm.attr('data-url')
+            $.ajax({
+                    method:'POST',
+                    url: $thisURL,
+                    data: $formData,
+                    success : handleSuccess,
+                    error: handleError,
+            });
+            function handleSuccess(data){
+                console.log(data.message)
+                t= data.message
+                $('#res').html(t)
+                $myForm[0].reset()
+            }
+            function handleError(ThrowError){
+                console.log(ThrowError)
+            }
+        });
+    });
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style type="text/css">
+  .create-form {
+	    width: 100%;
+	    max-width: 100%;
+	    padding: 15px;
+	    margin: auto;
+  	}
+  	.submit-button{
+  		max-width: 200px;
+  	}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-7 offset-lg-1">
+			<form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
+				{% if success %}
+				<p class="alert alert-success">{{ success }}</p>
+				{% endif %}
+
+
+				{% for field in form %}
+                        {% for error in field.errors %}
+                    <p style="color:red">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+            
+                    {% if form.non_field_errors %}
+                    <div style="color:red">
+                        <p> {{  form.non_field_errors }}</p>
+                    </div>
+                    {% endif %}
+
+				<!-- Brand -->
+				<div class="form-group">
+					<label for="id_title">Brand</label>
+					<input class="form-control" type="text" name="brand" id="id_brand" placeholder="Brand" required autofocus>
+                </div>
+                
+
+
+                	<!-- Model -->
+				<div class="form-group">
+                        <label for="id_title">Model</label>
+                        <input class="form-control" type="text" name="model" id="id_model" placeholder="Model" required autofocus>
+                </div>
+
+                
+                	<!-- Color -->
+				<div class="form-group">
+                        <label for="id_title">Color</label>
+                        <input class="form-control" type="text" name="color" id="id_color" placeholder="Color" required autofocus>
+                </div>
+
+                
+                	<!-- Price -->
+				<div class="form-group">
+                        <label for="id_title">Price</label>
+                        <input class="form-control" type="text" name="price" id="id_price" placeholder="Price" required autofocus>
+                </div>
+
+                
+                	<!-- Year -->
+				<div class="form-group">
+                        <label for="id_title">Year</label>
+                        <input class="form-control" type="text" name="year" id="id_year" placeholder="Year" required autofocus>
+                </div>
+
+
+                <!--Fuel_type-->
+                <select name="fuel_type">
+                        <option value="">Fuel type</option>
+                        <option value="P">Petrol</option>
+                        <option value="D">Diesel</option>
+                        <option value="E">Electric</option>
+                       
+                </select>
+
+                 <!--Condition-->
+                <select name="condition">
+                        <option value="">Condition</option>
+                        <option value="N">New</option>
+                        <option value="T">Tokunbo</option>
+                        <option value="NU">Nigerian Use</option>
+
+                </select>
+
+    
+				
+				<!-- Image -->
+				<div class="form-group">
+					<label for="id_image">Image</label>
+					<input  type="file" name="image" id="id_image" accept="image/*" required>
+				</div>
+			
+				
+
+				<!-- Submit btn -->
+				<button class="submit-button btn btn-lg btn-primary btn-block" type="submit">POST</button>
+			</form>	
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock content %}

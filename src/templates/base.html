@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Document</title>
+  
+</head>
+<style>
+    .main{
+        min-height: 100vh;
+        height: 100%;
+    }
+</style>
+<body>
+    
+   {% include 'snippets/header.html' %}
+    <div class="main">
+            {% block content %}
+
+   
+
+            {% endblock %}
+
+           
+    </div>
+    
+    {% include 'snippets/brand.html' %}
+
+
+    {% block scriptss %}
+
+    {% endblock %}
+
+    <!--jQuery-->
+ <script type="text/javascript" src="{% static  'css/bootstrap/js/jquery-3.3.1.js' %}"></script>
+ <!--Popper-->
+ <script type="text/javascript" src="{% static  'css/bootstrap/js/popper.min.js' %}"></script>
+ <!--Bootstrap-->
+ <script type="text/javascript" src="{% static 'css/bootstrap/js/bootstrap.min.js' %}"></script>
+ 
+
+</body>
+</html>

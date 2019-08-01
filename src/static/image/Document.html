@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:8000/contactus -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://127.0.0.1:8000/contactus" method="POST">
+        <div class="form-group">
+                <label for="name">Name: </label>
+                <input class="form-control" id="form" name="name" placeholder="input username" type="text" value="">  
+                                    
+                                                   
+        </div>
+        <div class="form-group">
+                <label for="email">Email: </label>
+                <input id="email" name="email" type="text" value="">
+        </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+
+                <input id="csrf_token" name="csrf_token" type="hidden" value="IjFhMGY2MmQzZTA2ZTQ4YzZjNzhmZmUwOTQwNjMyMGZhMzMwZGRmZjgi.XQjc-Q.ksceJZ-HnEn1NYvYIjacDaQsbpE">
+                <input id="submit" name="submit" onclick="validate()" type="submit" value="Submit">
+            </div>
+
+            
+
+            
+
+            
+
+           
+    </form>
+   <script type="text/javascript">
+        function validate(){
+            var x = document.getElementById('form')
+            if(x == ''){
+                alert('input username')
+            }
+        }
+   </script> 
+
+</body></html>

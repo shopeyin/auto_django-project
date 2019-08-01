@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type= "text/css">
+.card{
+    max-width: 700px;
+}
+
+.container{
+    padding: 20px;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+
+        <!--Cars-->
+
+        <div class="card m-auto">
+            <img class="card-img-top" src="{{ cars.image.url}}">
+            <div class="card-body my-2">
+                <h2 class="card-title">{{ cars.brand}}</h2>
+                <p class="card-text">{{ cars.model|safe }}</p>
+                {% if  cars.seller == request.user %}
+                    <a href="{% url 'cars:edit' cars.slug %}" class="btn btn-secondary">Update</a>
+                {% endif %}
+
+            </div>
+            <div class="card-footer text-muted">
+                Updated on {{ cars.date_updated }} by {{ cars.seller }} 
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+	
+			
+
+		
+<!--Fixed social media bar-->				
+<div class="row" id="sm" style="margin: 5px;" >
+		<a href="#"><img src="{% static 'image/fa.png' %}" width="30"  ></a>		
+		<a href="#"><img src="{% static 'image/twit.png' %}" width="30"></a>
+		<a href="#"><img src="{% static 'image/l.png'  %}" width="30" ></a>	
+		<a href="#"><img src="{% static 'image/y.png' %}" width="30" >	</a>
+</div>
+
+
+
+
+<div class="container" >
+	<div class="row" >
+		{% if cars %}
+			{% for cars in cars %}
+			<div class="col-md-4 ">
+					{% include 'cars/snippets/car_snippets.html' with cars=cars %}
+			</div>
+			{% endfor %}
+		{% else %}
+			<div class="container" >
+					{% include 'cars/snippets/car_snippets.html' with query=query %}  
+			</div>
+		{% endif %}
+		
+			
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-5">
+					<p class="m-auto"><a class="btn btn-primary" href="{% url 'cars:create' %}">Add vehicle</a></p> 
+			</div>
+		</div>
+		
+	</div>
+	<!--Pagination-->
+	{% include 'cars/snippets/cars_pagination.html' with cars=cars %}  
+</div>
+
+
+
+
+
+
+	
+
+
+
+
+
+<div class="container-fluid">
+		<div class="row" id="advantages0">
+				<div class="col-md-12" id="advantages" >
+					<h1>Our Advantages</h1>
+				</div>
+				<div class="col-md-3"  >
+					<i class="fas fa-car icon"></i>
+					<h4 >Largest dealership</h4>
+					<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div >
+				<div class="col-md-3">
+					<i class="fas fa-money-bill-alt icon" ></i>
+					<h4>Lower car prices</h4>
+					<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-md-3">
+					<i class="fas fa-cog icon"></i>
+					<h4>Multipoint safety</h4>
+					<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+	</div>
+
+		<div class="row" id="services" >
+				<div class="col-md-12">
+					<h2>Vehicle Services</h2>
+					<p>-BEST FOR YOUR CAR</p>
+				</div>
+				<div class="col-md-3" id="auto" >
+					<p class="pa"><i class="fas fa-tools icon2" ></i>Auto repairing</p>
+					<p class="pa"><i class="fas fa-user-cog icon2" ></i>Transmission checkup</p>
+					<p class="pa"><i class="fas fa-cogs icon2"></i>Vehicle Inspection</p>
+				</div>
+				<div class="col-md-3">
+					<h4>Auto Repairing</h4>
+					<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					qucepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-md-3" id="services0" >
+					<p><i class="fas fa-check-square icon3" ></i>Lorem ipsum doloest laborum.</p>
+					<p><i class="fas fa-check-square icon3" ></i>Lorem ipsum doloest laborum.</p>
+					<p><i class="fas fa-check-square icon3" ></i>Lorem ipsum doloest laborum.</p>
+					<p><i class="fas fa-check-square icon3" ></i>Lorem ipsum doloest laborum.</p>
+					<p><i class="fas fa-check-square icon3" ></i>Lorem ipsum doloest laborum.</p>
+					<p><i class="fas fa-check-square icon3" ></i>Lorem ipsum doloest laborum.</p>
+				</div>
+		</div>
+	
+		
+
+<!-- <div class="wrapper" style="background-color: yellow;"> -->
+		<div class="row" style="display: flex; background-color: #F8F8FF">
+				<div class="col-md-12">
+					<h4 style="text-align: center">Customer Reviews</h4>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-md-12" >
+					<img src="{% static 'images/quote.png' %}" alt="logo" width="100" style="display: block;margin: auto;">
+					
+				</div>
+		</div>
+		<div class="row" style="display: flex; ">
+				<div class="col-md-12">
+					<p class="para">Lorem ipsum rure dolor in reprehenderit <br>in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur.<br> Excepteur sint occaecat cupidatat non
+					proident,<br> sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+						<strong>Shopeyin </strong> <br> <strong>Vehicle buyer</strong> 
+					</p>
+
+				</div>
+		</div>
+
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+			
+    

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                    <form class="form-edit" method="POST">
+                            {% csrf_token %}
+                        {% if success_message %}
+                            <div class="alert alert-success">
+                                    <p style="text-align: center">{{ success_message }}</p> 
+                            </div>
+                            
+                        {% endif %}
+                        <h1 class="h3 mb-3 font-weight-normal">Edit  Profile</h1>
+                        <div  class="form-label-group">
+                                <label for="inputEmail" class="sr-only">Email address</label>
+                                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" value=" {{ account_form.initial.email }}"  required autofocus>
+                        </div>
+                        <div  class="form-label-group">
+                                <label for="inputUsername" class="sr-only">Username</label>
+                                <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" value=" {{ account_form.initial.username }}"  required autofocus>
+                        </div>
+                        <div  class="form-label-group">
+                                <label for="inputPhone" class="sr-only">Phone number</label>
+                                <input type="tel" id="inputPhone" name="phonenumber" class="form-control" placeholder="Phone number" value=" {{ account_form.initial.phonenumber }}"  required autofocus>
+                        </div>
+                        <div  class="form-label-group">
+                                <label for="inputAddress" class="sr-only">Address</label>
+                                <input type="text" id="inputEmail" name="address" class="form-control" placeholder="Address" value=" {{ account_form.initial.address }}" required autofocus>
+                        </div>
+                    
+                               
+                    
+                                {% for field in account_form %}
+                                    {% for error in field.errors %}
+                                        <p style="color:red">{{ error }}</p>
+                                    {% endfor %}
+                                {% endfor %}
+                    
+                                {% if account_form.non_field_errors %}
+                                <div style="color:red">
+                                     <p> {{ account_form.non_field_errors }}</p>
+                                </div>
+                                {% endif %}
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Save changes</button>
+                      </form>
+                    
+                             <div class="d-flex flex-column"  id="password_reset">
+                                    <a href="{% url 'password_change' %}">Change Password</a>
+                             </div>
+            </div>
+            <div class="col-md-6"  >
+                    <h3 class="mb-3 font-weight-normal" style="text-align: center; padding-top: 15px;">My Cars</h3>
+                    {% if cars %}
+                    <ul style="width:100%">
+                        
+                                <table class="table table-hover" >
+
+                                     <tr>
+                                                <th>Car model</th>
+                                                <th>Car brand</th> 
+                                                <th>Car year</th> 
+                                                <th>Car condition</th> 
+                                                <th>Action</th>      
+                                    </tr>
+                                   {% for cars in cars %}
+                                
+                                    <tr style="text-decoration: none">
+                                        <td> <a href="{% url 'cars:detail' cars.slug %}" >{{ cars.model }}</a> </td>
+                                                
+                                        <td><a href="{% url 'cars:detail' cars.slug %}"> {{ cars.brand }}</a></td>
+
+                                        <td><a href="{% url 'cars:detail' cars.slug %}"> {{ cars.year }}</a></td>
+
+                                        <td><a href="{% url 'cars:detail' cars.slug %}"> {{ cars.get_condition_display }}</a></td>
+
+                                        <td> <a data-toggle="modal" data-target="#exampleModalCenter" href=""><i class="fas fa-trash-alt"></i></a> </td>
+
+                                       
+                                                        
+              
+                                                <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                             <h5 class="modal-title" id="exampleModalLongTitle">Autoshop</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                               </button>
+                                                         </div>
+                                                        <div class="modal-body">
+                                                                 Are you sure you want to delete "{{ cars.model }}"?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                 <a  class="btn btn-outline-primary" href="{% url 'cars:delete' cars.slug %}">Delete</a>
+                                                        </div>
+                                                </div>
+                                           </div>
+                                        </div>
+                                                        
+                                         </tr>
+                                    {% endfor %}
+                                </table>
+                                
+                            
+                        <p style="padding-top: 10px; text-align: center">Add car <a class="btn btn-outline-warning" href="{% url 'cars:create' %}">here</a></p>
+                    </ul>
+                    {% else %}
+                    <p>You have no car to display.Add car <a href="{% url 'cars:create' %}">here</a></p>
+                    {% endif %}
+                     
+
+   
+   
+
+    
+            {% endblock %}
+        

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <form  class="form-reg" method="POST" >
+            {% csrf_token %}
+        <h3 style="text-align: center">Register an account</h3>
+            <div class="row">
+                    <div class="col-md-6  form-label-group">
+                            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            <label for="inputEmail">Email address</label>
+                    </div>
+                    <div class="col-md-6   form-label-group" >
+                            <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                            <label for="inputUsername">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-md-6  form-label-group">
+                            <input type="text" name="firstname" id="inputFirstName" class="form-control" placeholder="First name" required autofocus>
+                            <label for="inputFirstName">First name</label>
+                    </div>
+                    <div class="col-md-6  form-label-group">
+                            <input type="text" name="lastname" id="inputLastName" class="form-control" placeholder="Last name" required autofocus>
+                            <label for="inputLastName">Last name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6   form-label-group">
+                       
+                         <input type="tel" id="inputPhone" name="phonenumber" class="form-control" placeholder="Phone number"  required autofocus>
+                         <label for="inputPhone">Phone number</label>
+                    </div>
+                    <div class="col-md-6   form-label-group">
+                            
+                            <input type="text" id="inputAddress" name="address" class="form-control" placeholder="Address"  required autofocus>
+                            <label for="inputAddress">Address</label>
+                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6   form-label-group">
+                            <input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="Password" required>
+                            <label for="inputPassword1">Password</label>
+                    </div>
+                    <div class="col-md-6   form-label-group">
+                            <input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Confirm Password" required>
+                            <label for="inputPassword2">Confirm Password</label>
+                    </div>
+                </div>
+                    {% for field in registration_form %}
+                        {% for error in field.errors %}
+                    <p style="color:red">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+            
+                    {% if registration_form.non_field_errors %}
+                    <div style="color:red">
+                        <p> {{  registration_form.non_field_errors }}</p>
+                    </div>
+                    {% endif %}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+   
+</div>
+
+
+
+{% endblock %}      
+
+
+

@@ -1,0 +1,53 @@
+{% load thumbnail %}
+
+
+{% if cars %}
+
+<div class="container" >
+    <div class="row">
+
+        <!-- Cars -->
+        <div class="card " style="margin-bottom:20px;">
+            <a href="{% url 'cars:detail' cars.slug %}">
+                 {% thumbnail cars.image "300x300" crop="center" as im %}
+                <img class="card-img-top" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}">
+                {% endthumbnail %}
+            </a>
+            
+            <div class="card-body" >
+                <a href="{% url 'cars:detail' cars.slug %}">
+                    <h2 class="card-title"> {{cars.brand}}</h2>
+                </a>
+                <p class="card-text"> Model: {{cars.model}}</p>
+                <p class="card-text"> Year: {{cars.year}}</p>
+                <p class="card-text"> Seller: {{cars.seller.lastname}}</p>
+                <p class="card-text"> Phone :{{cars.seller.phonenumber}}</p>
+                    
+                {% if cars.seller == request.user %}
+                    <a href="{% url 'cars:edit' cars.slug %}" class="btn btn-primary">Update</a>
+                {% else %}
+                <a href="{% url 'cars:detail' cars.slug %}" class="btn btn-primary">View details</a>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">
+              Updated on {{cars.date_updated}} 
+            </div>
+        </div>    
+        
+    </div>
+</div>
+
+ {% else %}
+
+ <div  class="container " style="display: flex;justify-content: center;min-height: 400px;align-items: center">
+    <div class="row" style="min-height: 100px;">
+        <div class="col-md-12" style="font-size: 40px;" >
+            No results found
+
+            <p>There were no result matching your request : {{ query }}
+        </div>
+    </div>
+ </div>
+    
+{% endif %}
+
