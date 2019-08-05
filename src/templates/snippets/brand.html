@@ -23,15 +23,19 @@ a:hover {
 						<h4 style="margin-top: 30px;text-align: center">Our Brands</h4>
 						<p class="para"><span style="color:red">-</span>THE AUTOS WE DEAL IN<span style="color:red">-</p>
 					</div>
-					<div class="col-md-11 offset-1" >
-						<img src="{% static 'image/audi.png' %}" width="150" class="img-fluid">
-						<img src="{% static 'image/abmw.jpeg' %}" width="150" class="img-fluid">
-						<img src="{% static 'image/avolk.jpeg' %}" width="270" class="img-fluid">
-						<img src="{% static 'image/abe.jpg' %}" width="150" class="img-fluid">
-                        <img src="{% static  'image/atoyo.jpeg' %}" width="180" class="img-fluid">
-                        
-					</div>
+		</div>
+		<div class="row" style="background-color:white">
+			<div class="col-md-12">
+				<div class="col-md-11 offset-1" >
+					<img src="{% static 'image/audi.png' %}" width="200" class="img-thumbnail"  class="img-fluid" >
+					<img src="{% static 'image/abmw.jpeg' %}" width="200"   class="img-thumbnail" class="img-fluid" >
+					<img src="{% static 'image/bent.png' %}" width="200"  class="img-thumbnail" class="img-fluid" >
+					<img src="{% static 'image/abe.jpg' %}" width="200"  class="img-thumbnail"  class="img-fluid">
+					<img src="{% static  'image/honda.png' %}" width="200" class="img-thumbnail" class="img-fluid">
+					
+				</div>
 			</div>
+		</div>
 				<div class="row" style="background-color:#A2B5CD">
 					<div class="col-md-3">
 						<img src="{% static 'image/logo.png' %}" class="img-fluid" style="display: block;margin: auto;">
@@ -47,7 +51,7 @@ a:hover {
 					<div class="col-md-3" style="padding-top: 80px;">
 							<h4>OUR TERMS</h4>
 						<p class="para"><a href="#"> Support</a></p>
-						<p class="para"><a href="#"> Contact</a></p>
+						<p class="para"><a  href="{% url 'contactus' %}"> Contact</a></p>
 						<p class="para"><a href="#"> Typography</a></p>
 						<p class="para"><a href="#"> FAQ</a></p>
 					</div>
@@ -61,3 +65,4 @@ a:hover {
 					
 				</div>
 	</div>
+	

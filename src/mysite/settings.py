@@ -25,7 +25,7 @@ SECRET_KEY = '5onyg@3wh_=*hvfs3kn%xv=*&_o&5ddyl-=(-cs(7^#9y(^o%_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'account',
     'cars', 
     'sorl.thumbnail',
-    'phone_field',
-    'djmoney',
+    
 
     #django apps
     'django.contrib.admin',

@@ -26,7 +26,7 @@ from personal import views as myapp_views
 from personal.views import(
     home_screen_view,
     contactus_view,
-    aja_view,
+    
 )
 
 from account.views import(
@@ -40,7 +40,6 @@ from account.views import(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('aja/', aja_view, name='aja'),
     path('contactus/', contactus_view, name='contactus'),
     path('account/', account_view, name='account'),
     path('cars/', include('cars.urls','cars')),

@@ -2,12 +2,40 @@
 {% load static %}
 {% block content %}
 
+<!-- .container{
+  min-height: 500px;
+  border: 1px solid;
+  background-image: url(image/car3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+    
+
+} -->
+
+<style>
+  h2{
+    text-align: center
+  }
+  body{
+    background-image: url("{% static 'image/carm.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  form{
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    color:white;
+   
+  }
+  a{
+    color: white;
+  }
+</style>
 
 
-
-
-
-<form class="form-signin" method="POST">
+<form class="form-signin" method="POST",style="background-color: rgba(0,0,0, 0.6);color: white;padding: 10px;border-radius: 10px">
         <h2>Login</h2>
         
         {% csrf_token %}
@@ -22,28 +50,26 @@
           <label for="inputPassword">Password</label>
         </div>
       
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
+        
         {% for field in login_form %}
             {% for error in field.errors %}
-            <p style="color:red">{{ error }}</p>
+            <p style="color:red;">{{ error }}</p>
             {% endfor %}
         {% endfor %}
 
          {% if login_form.non_field_errors %}
-        <div style="color:red">
-            <p> {{ login_form.non_field_errors }}</p>
+        <div style="color:red; ">
+            <p > {{ login_form.non_field_errors }}</p>
         </div>
         {% endif %}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
+        <div id="password_reset">
+            <a style="color: white" href="{% url 'password_reset' %}">Reset Password</a>
+         </div>
+
  </form>
- <div id="password_reset">
-    <a href="{% url 'password_reset' %}">Reset Password</a>
- </div>
+
 
 
 {% endblock %}

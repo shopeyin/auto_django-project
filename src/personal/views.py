@@ -77,25 +77,14 @@ def contactus_view(request):
                'message' : 'You will be contacted shortly'
             }
             return JsonResponse(data)
+        else:
+            data = {
+                'message' : 'invalid email address'
+            }
+        return JsonResponse(data)
         context['contactus_form'] = form
     return render(request,'personal/contactus.html',context)
 
 
 
-
-def aja_view(request):
-    context = {}
-
-    if request.is_ajax():
-        form = CreateAjaForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user=request.user
-            instance.save()
-            data = {
-                'message' : 'You will be contacted shortly'
-            } 
-            return JsonResponse(data)
-        context['aja_form']=form
-    return render(request,'personal/aja.html',context)
 

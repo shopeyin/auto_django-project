@@ -242,6 +242,13 @@ border-top-right-radius: 0;
 
 
 /* HOME*/
+
+#auto{
+     display: flex;
+     flex-wrap: wrap;
+}
+
+
 #sm{
       display:inline-grid; 
       position: fixed; 
@@ -292,8 +299,8 @@ border-top-right-radius: 0;
   }
 
 
-/* CAR SNIPPET*/
-  .card{
+CAR SNIPPET*/
+   .card{
     max-width: 300px;
     padding: 10px;
    

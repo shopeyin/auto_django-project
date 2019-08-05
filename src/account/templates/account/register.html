@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
+<style>
 
+body{
+    background-image: url("{% static 'image/carm.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  form{
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    color:white;
+   
+  }
+  a{
+    color: white;
+  }
+</style>
 
 <div class="container">
     <form  class="form-reg" method="POST" >
