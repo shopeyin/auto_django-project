@@ -9,8 +9,8 @@
         <!-- Cars -->
         <div class="card " style="margin-bottom:20px;">
             <a href="{% url 'cars:detail' cars.slug %}">
-                 {% thumbnail cars.image "300x300" crop="center" as im %}
-                <img class="card-img-top" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}">
+                 {% thumbnail cars.image "500x300" crop="center" as im %}
+                <img class="card-img-top" src="{{im.url}}" width=100%  height="{{ im.height }}">
                 {% endthumbnail %}
             </a>
             
