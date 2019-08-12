@@ -7,5 +7,5 @@ A web application where  a vehicle dealer can upload vehicles they want to sell 
 * Core Data (Entities, Attributes, Relationships)
 * Fetch & controlling the image using PILLOW library and sorl-thumbnail
 * Built API endpoint for other technologies to communicate with the web app using DJANGO REST FRAMEWORK
-* Authenticating users on the server using Token 
+* Authenticating users on the server using Token Authentication
 * Restricting access with PERMISSIONS 
