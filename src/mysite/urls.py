@@ -49,6 +49,9 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('must_authenticate/', must_authenticate_view, name='must_authenticate'),
 
+    #REST FRAMEWORK URLS
+    path('api/cars/',include('cars.api.urls','cars_api')),
+    path('api/account/',include('account.api.urls','account_api')),
 
 
      # Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
