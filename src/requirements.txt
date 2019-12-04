@@ -1,4 +1,4 @@
-Django==2.2.2
+Django==2.2.8
 django-money==0.15
 django-phone-field==1.7.1
 djangorestframework==3.10.2
